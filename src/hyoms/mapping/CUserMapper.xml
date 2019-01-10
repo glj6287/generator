@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hyoms.dao.CUserMapper" >
+  <resultMap id="BaseResultMap" type="hyoms.model.CUser" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
+    <result column="IMEI" property="imei" jdbcType="VARCHAR" />
+    <result column="CERT_NO" property="certNo" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="REAL_STATUS" property="realStatus" jdbcType="VARCHAR" />
+    <result column="INNER_BLACK_STATUS" property="innerBlackStatus" jdbcType="VARCHAR" />
+    <result column="BLACK_STATUS" property="blackStatus" jdbcType="VARCHAR" />
+    <result column="CHEAT_STATUS" property="cheatStatus" jdbcType="VARCHAR" />
+    <result column="PWD" property="pwd" jdbcType="VARCHAR" />
+    <result column="CONTACT_TYPE" property="contactType" jdbcType="VARCHAR" />
+    <result column="CONTACT_NAME" property="contactName" jdbcType="VARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="DRIVER_LICENSE" property="driverLicense" jdbcType="VARCHAR" />
+    <result column="DRIVING_LICENSE" property="drivingLicense" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CUSTOMER_ID, NAME, NICK_NAME, IMEI, CERT_NO, MOBILE, EMAIL, REAL_STATUS, INNER_BLACK_STATUS, 
+    BLACK_STATUS, CHEAT_STATUS, PWD, CONTACT_TYPE, CONTACT_NAME, CONTACT_MOBILE, STATUS, 
+    DRIVER_LICENSE, DRIVING_LICENSE, CREATE_DATE, UPDATE_DATE, UPDATE_USER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from CAR_C_USER
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from CAR_C_USER
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="hyoms.model.CUser" >
+    insert into CAR_C_USER (ID, CUSTOMER_ID, NAME, 
+      NICK_NAME, IMEI, CERT_NO, 
+      MOBILE, EMAIL, REAL_STATUS, 
+      INNER_BLACK_STATUS, BLACK_STATUS, CHEAT_STATUS, 
+      PWD, CONTACT_TYPE, CONTACT_NAME, 
+      CONTACT_MOBILE, STATUS, DRIVER_LICENSE, 
+      DRIVING_LICENSE, CREATE_DATE, UPDATE_DATE, 
+      UPDATE_USER)
+    values (#{id,jdbcType=BIGINT}, #{customerId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, #{certNo,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{realStatus,jdbcType=VARCHAR}, 
+      #{innerBlackStatus,jdbcType=VARCHAR}, #{blackStatus,jdbcType=VARCHAR}, #{cheatStatus,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{contactType,jdbcType=VARCHAR}, #{contactName,jdbcType=VARCHAR}, 
+      #{contactMobile,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{driverLicense,jdbcType=VARCHAR}, 
+      #{drivingLicense,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="hyoms.model.CUser" >
+    insert into CAR_C_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME,
+      </if>
+      <if test="imei != null" >
+        IMEI,
+      </if>
+      <if test="certNo != null" >
+        CERT_NO,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="realStatus != null" >
+        REAL_STATUS,
+      </if>
+      <if test="innerBlackStatus != null" >
+        INNER_BLACK_STATUS,
+      </if>
+      <if test="blackStatus != null" >
+        BLACK_STATUS,
+      </if>
+      <if test="cheatStatus != null" >
+        CHEAT_STATUS,
+      </if>
+      <if test="pwd != null" >
+        PWD,
+      </if>
+      <if test="contactType != null" >
+        CONTACT_TYPE,
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="driverLicense != null" >
+        DRIVER_LICENSE,
+      </if>
+      <if test="drivingLicense != null" >
+        DRIVING_LICENSE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null" >
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null" >
+        #{realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="innerBlackStatus != null" >
+        #{innerBlackStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="blackStatus != null" >
+        #{blackStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cheatStatus != null" >
+        #{cheatStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="contactType != null" >
+        #{contactType,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLicense != null" >
+        #{driverLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingLicense != null" >
+        #{drivingLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="hyoms.model.CUser" >
+    update CAR_C_USER
+    <set >
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        IMEI = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null" >
+        CERT_NO = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null" >
+        REAL_STATUS = #{realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="innerBlackStatus != null" >
+        INNER_BLACK_STATUS = #{innerBlackStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="blackStatus != null" >
+        BLACK_STATUS = #{blackStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cheatStatus != null" >
+        CHEAT_STATUS = #{cheatStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        PWD = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="contactType != null" >
+        CONTACT_TYPE = #{contactType,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLicense != null" >
+        DRIVER_LICENSE = #{driverLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingLicense != null" >
+        DRIVING_LICENSE = #{drivingLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hyoms.model.CUser" >
+    update CAR_C_USER
+    set CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      IMEI = #{imei,jdbcType=VARCHAR},
+      CERT_NO = #{certNo,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      REAL_STATUS = #{realStatus,jdbcType=VARCHAR},
+      INNER_BLACK_STATUS = #{innerBlackStatus,jdbcType=VARCHAR},
+      BLACK_STATUS = #{blackStatus,jdbcType=VARCHAR},
+      CHEAT_STATUS = #{cheatStatus,jdbcType=VARCHAR},
+      PWD = #{pwd,jdbcType=VARCHAR},
+      CONTACT_TYPE = #{contactType,jdbcType=VARCHAR},
+      CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      DRIVER_LICENSE = #{driverLicense,jdbcType=VARCHAR},
+      DRIVING_LICENSE = #{drivingLicense,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
